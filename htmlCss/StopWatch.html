@@ -1,0 +1,156 @@
+<html>
+<head>
+<script LANGUAGE="JavaScript">
+
+var timerRunning = false
+
+var timerID = null
+
+// create instance of Date object representing current time
+
+var initial = new Date()
+
+// start timer
+
+function start_watch() {      
+
+        // set the button's label to "stop"     
+
+                document.forms['watch'].general.value = "stop"        
+
+        // assign the stop function reference to the button's onClick event handler     
+
+                document.forms['watch'].general.onclick = stop        
+
+        // ask the user if to reset the timer   
+
+                if (confirm("Would you like to reset the timer?"))              
+
+        // set global variable to new time              
+
+                initial = new Date()                    
+
+        // assign milliseconds since 1970 to global variable    
+
+                startTime = initial.getTime()   
+
+        // make sure the timer is stopped       
+
+                stopTimer()     
+
+        // run and display timer        
+
+                showTimer()
+
+}
+
+// set button to initial settings
+
+function stop() {       
+
+        // set the button's label to "start"    
+
+                document.forms['watch'].general.value = "start"       
+
+        // assign the start_watch function reference to the button's onClick event handler    
+
+                document.forms['watch'].general.onclick = start_watch       
+
+        // stop timer   
+
+                stopTimer()
+
+}
+
+        // stop timer
+
+function stopTimer() {  
+
+        // if the timer is currently running    
+
+                if (timerRunning)               
+
+        // clear the current timeout (stop the timer)           
+
+                clearTimeout(timerID)   
+
+        // assign false to global variable because timer is not running 
+
+                timerRunning = false
+
+}
+
+function showTimer() {  
+
+        // create instance of Date representing current timer   
+
+                var current = new Date()        
+
+        // assign milliseconds since 1970 to local variable     
+
+                var curTime = current.getTime() 
+
+        // assign difference in milliseconds since timer was cleared    
+
+                var dif = curTime - startTime           
+
+        // assign difference in seconds to local variable       
+
+                var result = dif / 1000 
+
+        // is result is not positive    
+
+                if (result < 1)         
+
+        // attach an initial "0" to beginning           
+
+                result = "0" + result           
+
+        // convert result to string     
+
+                result = result.toString()      
+
+        // if result is integer 
+
+                if (result.indexOf(".") == -1)          
+
+        // attach ".00" to end          
+
+                result += ".00" 
+
+        // is result contains only one digit after decimal point        
+
+                if (result.length - result.indexOf(".") <= 2)           
+
+        // add a second digit after point               
+
+                result += "0"   
+
+        // place result in text field   
+
+                document.forms['watch'].display.value = result        
+
+        // call function recursively immediately (must use setTimeout to avoid overflow)        
+
+                timerID = setTimeout("showTimer()", 0)  
+
+        
+
+                timerRunning = true
+
+}
+
+</script>
+
+</head>
+<body>
+<center>
+<form name="watch">
+ <input TYPE="text" NAME="display" 
+ onFocus="this.blur()" size="20">
+ <input TYPE="button" NAME="general" VALUE="start"  onClick="start_watch();">
+</form>
+</center>
+
+</body>
+</html>

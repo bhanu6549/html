@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+$(document).ready(
+		function()
+		{
+			$(#form_index).submit(function(event))
+			{
+				event.preventDefault();
+				ajaxPost();
+			}
+		});
+		function ajaxPOst()
+		{
+			var formData={
+					Bname=$(#bname).val()
+					Aname=$(#Aname).val()
+					Price-$(#Price).val();
+			}
+		}
+		$.ajax(
+				{
+					type:"Post",
+					contenttype:"application/json",
+					url:localhost:8080/index/savebook",
+					datatype:"json"
+				}
+				)
+</script>
+</head>
+
+<body>
+
+<h2>Add Book</h2>
+
+<form id="form_index">
+  <label for="Bname">Book name:</label><br>
+  <input type="text" id="Bname" ><br>
+  
+  <label for="Aname"> Author name:</label><br>
+  <input type="text" id="Aname"><br><br>
+  
+   <label for="Price"> Book Price:</label><br>
+  <input type="text" id="Price"><br><br>
+  
+  
+  <input type="submit" value="Submit">
+</form> 
+</body>
+</html>

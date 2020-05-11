@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+form{
+    display: block;
+    background-color: #f1f1f1;
+    margin:auto;
+    width:50%;
+    height:500px;
+    border:2px solid black;
+    border-radius:50px;
+   
+}
+#h{
+text-align:center;
+}
+
+input{
+    padding:10px;
+}
+
+p:hover {
+ 
+  transform: rotate(20deg); /* Standard syntax */
+}
+body{
+background-image:url('D:/downloads.PNG');
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+
+}
+button:hover{
+    padding:20px;
+}
+
+
+</style>
+
+</head>
+<body>
+<div style="height:1000px">
+    <section id="home">
+        <form id="frm">
+            <h1 style="text-align: center;border:2px solid;padding:20px;border-left:10px; border-right:10px;">Mindtree Kalinga</h1>
+
+            <p style="text-align: center" >Welcome To Possible</p>
+            <button  style="margin:50px;margin-top:80px;" type="button" onclick="my2()">Home</button>
+            <button style="margin:50px;margin-top:80px;" type="button" onclick="my()">Register</button>
+            <button  style="margin:50px;margin-top:80px;" type="button" onclick="my1()">About us</button>
+           
+        </form>
+    </section>
+
+        <section Id="register" style="display:none;">
+        <form>
+                <h1 id="h" style=" padding:20px;border:2px solid black;"> Employe Registration</h1>
+           <label style="text-align:center;margin-left:150px;"><b>Username</b></label><br>
+           <input type="text" style="margin-left:150px;"  pattern="[a-zA-Z0-9_-]{6,12}" autofocus required
+       title="must be alphanumeric in 6-12 chars" ></input><br>
+           <label style="text-align:center;margin-left:150px;" required><b>Password</b></label><br>
+           <input type="Password" style="margin-left:150px;" ></input><br><br>
+
+       <b><p style="margin-left:150px;">Employee Type</p><br> <input type="radio" value="campus" name="emp" style="margin-left:150px;" ><b>campus Mind</b></input><br>
+        <input type="radio" value="mind"   name="emp" style="margin-left:150px;"><b>Mindtree mind</b></input><br>
+           
+        <button style="margin-left:150px;" onclick="submit">submit</button>                  
+        </form>
+    </section>
+    <section Id="about" style="display:none" >
+    <form>
+    <h1 style="text-align:center;margin-top:50px;">About Us</h1>
+    <img src="D:/downloads.PNG" style="margin-left:100px">
+    <p>
+    Mindtree Limited is an Indian multinational information technology and outsourcing company headquartered in Bangalore, India and New Jersey, USA. It is a Larsen & Toubro group company. Founded in 1999, the company employs approximately 20,204 employees with annual revenue of $1 Billion.
+    </p></form>
+</section>
+
+</div>
+   <script>
+       function my()
+       {
+    document.getElementById("register").style.display="block"
+    document.getElementById("home").style.display="none"
+    document.getElementById("about").style.display="none"
+       }
+       function my1()
+       {
+    document.getElementById("register").style.display="none"
+    document.getElementById("home").style.display="none"
+    document.getElementById("about").style.display="block"
+       }
+        function my2()
+       {
+    document.getElementById("register").style.display="none"
+    document.getElementById("home").style.display="block"
+   
+       }
+   </script>
+   
+</body>
+</html>
